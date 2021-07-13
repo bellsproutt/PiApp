@@ -1,0 +1,100 @@
+#:kivy 2.0.0
+
+<Interface>:
+    GridLayout:
+        cols: 1
+        size: 320,240
+        
+        BoxLayout:
+            orientation: "horizontal"
+            padding: 5
+            spacing: 5
+            
+            Button:
+                id: 'work-button'
+                text: "Work"
+                on_press:
+                    root.manager.current = 'main_timer_screen'
+                    #root.mainTimerScreen.show_timer()
+            Button:
+                id: 'break-button'
+                text: "Break"
+                on_press:
+                    root.manager.current = 'main_break_screen'
+
+        BoxLayout:
+            orientation: "horizontal"
+            padding: 5
+            spacing: 5
+            
+            Button:
+                id: 'edit-timer-button'
+                text: "Edit Timer"
+                on_press:
+                    root.manager.current = 'edit_timer_screen'
+            Button:
+                id: 'edit-break-button'
+                text: "Edit Break"
+                on_press:
+                    root.manager.current = 'edit_break_screen'
+
+
+<MainTimerScreen>
+    GridLayout:
+        cols: 1
+        
+        Label:
+            text: "0%s:%s:%s" % (root.hours, root.minutes, root.seconds)
+            font_size: 20
+        GridLayout:
+            cols: 3
+            Button:
+                id: "reset"
+                text: "reset"
+                on_press: root.reset()
+            Button:
+                id: "go"
+                text: "go!"
+                on_press: root.go()
+            GridLayout:
+                cols:1
+                Button:
+                    id: "start/stop"
+                    text: "start/stop"
+                    on_press:
+                        root.start_stop_toggle()
+                Button:
+                    id: "back"
+                    text: "back"
+                    on_press:
+                        root.manager.current = 'interface'
+
+<MainBreakScreen>
+    GridLayout:
+        cols: 1
+        
+        Label:
+            text: "0%s:%s:%s" % (root.hours, root.minutes, root.seconds)
+            font_size: 20
+        GridLayout:
+            cols: 3
+            Button:
+                id: "reset"
+                text: "reset"
+                on_press: root.reset()
+            Button:
+                id: "go"
+                text: "go!"
+                on_press: root.go()
+            GridLayout:
+                cols:1
+                Button:
+                    id: "start/stop"
+                    text: "start/stop"
+                    on_press:
+                        root.start_stop_toggle()
+                Button:
+                    id: "back"
+                    text: "back"
+                    on_press:
+                        root.manager.current = 'interface'
