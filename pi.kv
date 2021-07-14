@@ -44,28 +44,33 @@
         cols: 1
         
         Label:
+            id: "timer"
             text: "0%s:%s:%s" % (root.hours, root.minutes, root.seconds)
-            font_size: 20
+            font_size: 120
         GridLayout:
             cols: 3
             Button:
                 id: "reset"
                 text: "reset"
+                font_size: 50
                 on_press: root.reset()
             Button:
                 id: "go"
                 text: "go!"
+                font_size: 50
                 on_press: root.go()
             GridLayout:
                 cols:1
                 Button:
                     id: "start/stop"
-                    text: "start/stop"
+                    text: "toggle"
+                    font_size: 50
                     on_press:
                         root.start_stop_toggle()
                 Button:
                     id: "back"
                     text: "back"
+                    font_size: 50
                     on_press:
                         root.manager.current = 'interface'
 
@@ -75,26 +80,48 @@
         
         Label:
             text: "0%s:%s:%s" % (root.hours, root.minutes, root.seconds)
-            font_size: 20
+            font_size: 120
         GridLayout:
             cols: 3
             Button:
                 id: "reset"
                 text: "reset"
+                font_size: 50
                 on_press: root.reset()
             Button:
                 id: "go"
                 text: "go!"
+                font_size: 50
                 on_press: root.go()
             GridLayout:
                 cols:1
                 Button:
                     id: "start/stop"
                     text: "start/stop"
+                    font_size: 50
                     on_press:
                         root.start_stop_toggle()
                 Button:
                     id: "back"
                     text: "back"
+                    font_size: 50
                     on_press:
                         root.manager.current = 'interface'
+
+<EndTimerScreen>
+    GridLayout:
+        cols:1
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 0.788, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            text: "END"
+            font_size: 100
+        Button:
+            text: "back"
+            on_press:
+                root.manager.current = 'interface'
+

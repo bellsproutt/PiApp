@@ -76,10 +76,10 @@ class MainTimerScreen(Screen):
 		if int(self.hours) == 0:
 			if int(self.minutes) == 0:
 				if int(self.seconds.split(".")[0]) == 0:
-					if int(self.seconds.split(".")[1]) < 20:
 						self.seconds = "00.00"
-						self.button.background_color = (1, 0, 0, 1)
+						#self.timer.background_color = (1, 0, 0, 1)
 						self.stop()
+						self.manager.current = 'end_timer_screen'
 
 
 
@@ -152,10 +152,10 @@ class MainBreakScreen(Screen):
 		if int(self.hours) == 0:
 			if int(self.minutes) == 0:
 				if int(self.seconds.split(".")[0]) == 0:
-					if int(self.seconds.split(".")[1]) < 20:
 						self.seconds = "00.00"
-						self.button.background_color = (1, 0, 0, 1)
+						#self.button.background_color = (1, 0, 0, 1)
 						self.stop()
+						self.manager.current = 'end_timer_screen'
 
 
 
@@ -170,6 +170,10 @@ class EditTimerScreen(Screen):
 	pass
 class EditBreakScreen(Screen):
 	pass
+
+class EndTimerScreen(Screen):
+	pass
+	
 
 class Interface(Screen):
 	mainTimerScreen = MainTimerScreen()
@@ -187,6 +191,7 @@ class PiApp(App):
 		screen_manager.add_widget(MainBreakScreen(name="main_break_screen"))
 		screen_manager.add_widget(EditTimerScreen(name="edit_timer_screen"))
 		screen_manager.add_widget(EditBreakScreen(name="edit_break_screen"))
+		screen_manager.add_widget(EndTimerScreen(name="end_timer_screen"))
 		return screen_manager
 
 		
